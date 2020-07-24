@@ -10,7 +10,7 @@
     const time = performance.now();
     const list = document.createElement('li');
     list.innerText = `${time}:${message}`;
-    log.appendChild(list);
+    log.insertBefore(list, log.firstChild);
   };
   
   window.addEventListener('pointerdown', e => trace(e));
