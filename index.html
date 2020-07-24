@@ -1,20 +1,22 @@
 <!doctype html>
-<h1>PointerEventTraceDemo</h1>
-<ul id="log">
-</ul>
-<script>
-(() => {
-  const log = document.getElementById('log');
-  const trace = event => {
-    const message = event.type;
-    const time = performance.now();
-    const list = document.createElement('li');
-    list.innerText = `${time}:${message}`;
-    log.insertBefore(list, log.firstChild);
-  };
+<body style="touch-action: none">
+  <h1>PointerEventTraceDemo</h1>
+  <ul id="log">
+  </ul>
+  <script>
+    (() => {
+      const log = document.getElementById('log');
+      const trace = event => {
+        const message = event.type;
+        const time = performance.now();
+        const list = document.createElement('li');
+        list.innerText = `${time}:${message}`;
+        log.insertBefore(list, log.firstChild);
+      };
   
-  window.addEventListener('pointerdown', e => trace(e));
-  window.addEventListener('pointermove', e => trace(e));
-  window.addEventListener('pointerup', e => trace(e));
-})();
-</script>
+      window.addEventListener('pointerdown', e => trace(e));
+      window.addEventListener('pointermove', e => trace(e));
+      window.addEventListener('pointerup', e => trace(e));
+    })();
+  </script>
+</body>
