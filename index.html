@@ -14,17 +14,19 @@
   <script>
     (() => {
       const log = document.getElementById('log');
-      const trace = event => {
-        const message = event.type;
-        const time = performance.now();
+      const trace = message => {
         const list = document.createElement('li');
-        list.innerText = `${time}:${message}`;
+        list.innerText = message;
         log.insertBefore(list, log.firstChild);
       };
   
-      window.addEventListener('pointerdown', e => trace(e));
-      // bwindow.addEventListener('pointermove', e => trace(e));
-      window.addEventListener('pointerup', e => trace(e));
+      let time;
+      window.addEventListener('pointerdown', e => {
+        time = performance.now();
+      });
+      window.addEventListener('pointerup', e => {
+        trace(performance.now() - time);
+      });
     })();
   </script>
 </body>
