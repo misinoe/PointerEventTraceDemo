@@ -20,12 +20,11 @@
         log.insertBefore(list, log.firstChild);
       };
   
-      let time;
+      let prevTime = 0;
       window.addEventListener('pointerdown', e => {
-        time = performance.now();
-      });
-      window.addEventListener('pointerup', e => {
-        trace(performance.now() - time);
+        const now = performance.now();
+        trace(now - prevTime);
+        prevTime = now;
       });
     })();
   </script>
